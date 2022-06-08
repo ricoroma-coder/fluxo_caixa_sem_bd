@@ -4,7 +4,8 @@
 
 <html style="min-height: 100vh;min-width: 100vw;">
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Fluxo de Caixa</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
@@ -16,12 +17,12 @@
         </header>
 
         <section class="container">
-            <div id="head-section" class="d-flex justify-content-between p-1 mt-3">
+            <div id="head-section" class="d-flex justify-content-end p-1 mt-3">
                 <div>
-                    <button class="btn btn-success rounded" style="font-size: 1.1rem;">Criar</button>
+                    <button class="btn btn-success rounded" style="font-size: 1.1rem;" onclick="window.location.href = '/criar.php';">Criar</button>
                 </div>
 
-                <div>
+                <div style="margin-left: 5px;">
                     <button class="btn btn-danger rounded" style="font-size: 1.1rem;">Remover</button>
                 </div>
             </div>
