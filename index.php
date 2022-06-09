@@ -8,8 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Fluxo de Caixa</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/telas/index.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/telas/index.js"></script>
     </head>
     <body>
         <header class="row bg-dark m-0 p-2 w-100">
@@ -31,7 +33,7 @@
 
             <div id="content-section" class="d-flex p-2 mt-1">
                 <div class="flex-1 p-3 w-50">
-                    <table class="border boder-1 w-100">
+                    <table class="border boder-1 w-100" id="tabListaFluxos">
                         <thead>
                             <th class="text-center p-2 border border-1 bg-dark text-light" scope="100%">Fluxos</th>
                         </thead>
@@ -41,7 +43,7 @@
                                 if (!$dir || sizeof($dir) <= 2) {
                             ?>
                                 <tr>
-                                    <td>Não há fluxos...</td>
+                                    <td>Nenhum fluxo encontrado...</td>
                                 </tr>
                             <?php
                                 }
@@ -52,27 +54,29 @@
                             ?>
                                 <tr>
                                     <td>
-                                        <div class="d-flex w-100">
+                                        <div class="d-flex w-100" onclick="ativarListaArquivos($(this));">
                                             <div class="border border-1">
-                                                <img src="imagens/ico_pasta.png" style="height: 40px;width: 40px;">
+                                                <img src="imagens/ico_pasta.png" style="height: 50px;width: 40px;">
                                             </div>
                                             <div class="p-1 border border-1 w-100 d-flex align-items-center"><?php echo $ano; ?></div>
                                         </div>
 
                                         <?php
                                             foreach ($arquivos as $arquivo) {
-                                                checarDataRecentes("{$ano}/{$arquivo}.html", $ultimos);
+                                                checarDataRecentes("{$ano}/{$arquivo}.csv", $ultimos);
                                         ?>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex" style="margin-left: 40px; flex: 1;">
-                                                        <div class="p-1 border border-1">
-                                                            <img src="imagens/ico_arq.png" style="height: 30px;width: 30px;">
+                                            <table class="w-100">
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex" style="margin-left: 42px; flex: 1;">
+                                                            <div class="p-1 border border-1">
+                                                                <img src="imagens/ico_arq.png" style="height: 30px;width: 30px;">
+                                                            </div>
+                                                            <div class="p-1 border border-1 w-100 d-flex align-items-center"><?php echo $arquivo; ?></div>
                                                         </div>
-                                                        <div class="p-1 border border-1 w-100 d-flex align-items-center"><?php echo $arquivo; ?></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         <?php
                                             }
                                         ?>
@@ -93,7 +97,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                foreach (ordenarRecentes($ultimos) as $arquivo) {
+                                if (!is_null($ultimos)) {
+                                    foreach (ordenarRecentes($ultimos) as $arquivo) {
                             ?>
                                 <tr>
                                     <td>
@@ -105,6 +110,13 @@
                                             <div class="position-absolute" style="bottom: 0;right: 0;font-size: 14px;"><?php echo date("d/m/Y H:i:s", substr($arquivo['data'], 0, 10)); ?></div>
                                         </div>
                                     </td>
+                                </tr>
+                            <?php
+                                    }
+                                } else {
+                            ?>
+                                <tr>
+                                    <td>Nenhum arquivo recente...</td>
                                 </tr>
                             <?php
                                 }

@@ -1,0 +1,24 @@
+table tbody tr td > div:hover {
+    cursor: pointer;
+    background-color: #53bdeb;
+}
+
+#tabListaFluxos tbody tr td {
+    overflow: hidden;
+}
+
+#tabListaFluxos tbody tr td table * {
+    display: none;
+    height: 0 !important;
+}
+
+#tabListaFluxos tbody tr td table {
+    transition: height .5s;
+    -moz-transition: height .5s;
+    -webkit-transition: height .5s;
+}
+
+#tabListaFluxos tbody tr td table.active * {
+    display: block;
+    height: auto !important;
+}

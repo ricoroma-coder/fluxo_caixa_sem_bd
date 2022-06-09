@@ -16,7 +16,7 @@ function organizarPastas($fluxos) {
         $array[$ano] = [];
 
         foreach ($arquivos as $arquivo) {
-            if (substr($arquivo, -5) == ".html")
+            if (substr($arquivo, -4) == ".csv")
                 $array[$ano][] = str_replace(".csv", "", $arquivo);
         }
     }
@@ -44,5 +44,5 @@ function ordenarRecentes($recentes) {
         $retorno[] = $recentes[$chave];
     }
 
-    return $retorno;
+    return array_slice($retorno, 0, 5);
 }
