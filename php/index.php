@@ -17,7 +17,7 @@ function organizarPastas($fluxos) {
 
         foreach ($arquivos as $arquivo) {
             if (substr($arquivo, -5) == ".html")
-                $array[$ano][] = str_replace(".html", "", $arquivo);
+                $array[$ano][] = str_replace(".csv", "", $arquivo);
         }
     }
 
