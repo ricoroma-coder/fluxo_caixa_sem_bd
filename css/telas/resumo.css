@@ -1,0 +1,25 @@
+/* #detail-content {
+    max-height: 0 !important;
+}
+
+#detail-trigger.active ~ #detail-content {
+    max-height: auto !important;
+}
+
+#detail-content,
+#detail-trigger.active ~ #detail-content {
+    -moz-transition: max-height 5s ease;
+    -webkit-transition: max-height 5s ease;
+    -o-transition: max-height 5s ease;
+    transition: max-height 5s ease;
+} */
+
+#detail-content {
+    transform: scaleY(0);    
+    transform-origin: top;
+    transition: transform 0.26s ease;
+}
+
+#detail-trigger.active ~ #detail-content {
+    transform: scaleY(1);
+}

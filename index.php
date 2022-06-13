@@ -33,7 +33,7 @@
 
             <div id="content-section" class="d-flex p-2 mt-1">
                 <div class="flex-1 p-3 w-50">
-                    <table class="border boder-1 w-100" id="tabListaFluxos">
+                    <table class="border border-1 w-100" id="tabListaFluxos">
                         <thead>
                             <th class="text-center p-2 border border-1 bg-dark text-light" scope="100%">Fluxos</th>
                         </thead>
@@ -68,7 +68,7 @@
                                             <table class="w-100">
                                                 <tr>
                                                     <td>
-                                                        <div class="d-flex" style="margin-left: 42px; flex: 1;">
+                                                        <div class="d-flex" style="margin-left: 42px; flex: 1;" target="/resumo.php?nome=<?php echo "{$ano}/{$arquivo}.csv"; ?>" onclick="redirecionar($(this));">
                                                             <div class="p-1 border border-1">
                                                                 <img src="imagens/ico_arq.png" style="height: 30px;width: 30px;">
                                                             </div>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="flex-1 p-3 w-50">
-                    <table class="border boder-1 w-100">
+                    <table class="border border-1 w-100">
                         <thead>
                             <th class="text-center p-2 border border-1 bg-dark text-light" scope="2">Recentes</th>
                         </thead>
@@ -102,7 +102,7 @@
                             ?>
                                 <tr>
                                     <td>
-                                        <div class="d-flex w-100 position-relative">
+                                        <div class="d-flex w-100 position-relative" target="/resumo.php?nome=<?php echo $arquivo['nome']; ?>" onclick="redirecionar($(this));">
                                             <div class="border border-1">
                                                 <img src="imagens/ico_arq.png" style="height: 50px;width: 50px;">
                                             </div>

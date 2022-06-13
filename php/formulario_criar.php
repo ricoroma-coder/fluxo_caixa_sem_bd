@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST) && !empty($_POST)) {
-    $header = [
+    $cabecalho = [
         [
             'saidas',
             'entradas',
@@ -11,7 +11,18 @@ if (isset($_POST) && !empty($_POST)) {
             'gastos_extras',
             'transferencias',
             'investimentos',
-            'resultado'
+            'disponivel'
+        ],
+        [
+            'data|conta|descricao|valor|%receitas|%custos',
+            'data|descricao|valor',
+            'data|descricao|valor',
+            'data|descricao|valor',
+            'data|conta|descricao|valor',
+            'data|conta|descricao|valor',
+            'data|origem|destino|valor',
+            'data|corretora|descricao|quantidade|valor|total',
+            'data|conta|valor'
         ]
     ];
     $meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
@@ -74,18 +85,25 @@ if (isset($_POST) && !empty($_POST)) {
         if (!in_array($pasta, $pastas))
             mkdir("../1-fluxos/{$pasta}");
 
-        if (isset($nomeAltArq) && !empty($nomeAltArq))
+        $extensao = '.csv';
+        $personalizado = false;
+        if (isset($nomeAltArq) && !empty($nomeAltArq)) {
             $nomeArq = $nomeAltArq;
+            $extensao .= 'p';
+            $personalizado = true;
+        }
 
         $caminhoArq = false;
         if (!in_array("{$nomeArq}.csv", scandir("../1-fluxos/{$pasta}")))
-            $caminhoArq = "../1-fluxos/{$pasta}/{$nomeArq}.csv";
+            $caminhoArq = "../1-fluxos/{$pasta}/{$nomeArq}{$extensao}";
     }
 
     if ($caminhoArq !== false) {
         $csv = fopen($caminhoArq, "w");
-        foreach ($header as $titulo) {
-            fputcsv($csv, $titulo, ";");
+        if (!$personalizado) {
+            foreach ($cabecalho as $titulo) {
+                fputcsv($csv, $titulo, ";");
+            }
         }
         fclose($csv);
     }

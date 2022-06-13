@@ -1,8 +1,12 @@
 function ativarListaArquivos(objeto) {
-    let table = objeto.siblings('table')
+    let tabela = objeto.siblings('table')
     
-    if (table.hasClass('active'))
-        table.removeClass('active')
+    if (tabela.hasClass('active'))
+        tabela.removeClass('active')
     else
-        table.addClass('active')
+        tabela.addClass('active')
+}
+
+function redirecionar(objeto) {
+    window.location.href = objeto.attr('target')
 }

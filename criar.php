@@ -1,7 +1,3 @@
-<?php
-    require_once __DIR__ . "/php/index.php";
-?>
-
 <html style="min-height: 100vh;min-width: 100vw;">
     <head>
         <meta charset="utf-8">
